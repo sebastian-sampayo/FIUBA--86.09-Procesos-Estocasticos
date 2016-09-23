@@ -1,0 +1,14 @@
+%     s0
+%     s1-s0
+%     uA = alpha*sigma*sqrt(pi/2);
+%     sA = (alpha*sigma)^2*2*pi;
+%     sigmaX = (uA^2+sA)/2/kf
+%     SNR2 = sigmaX/s0
+%     potX = k/2
+%     
+%     tau0 = 4/c
+%     ntau0 = ceil(tau0/Ts)
+%     r1_teo = sqrt(2/T) * R .* cos(2*pi*fc*t);
+%     r2_teo = sqrt(2/T) * R .* sin(2*pi*fc*t);
+%     r_abs_teo = (sum(r1_teo(ntau0:ntau0+nT))*Ts)^2 + (sum(r2_teo(ntau0:ntau0+nT))*Ts)^2
+   

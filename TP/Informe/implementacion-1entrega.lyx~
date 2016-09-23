@@ -1,0 +1,204 @@
+#LyX 2.0 created this file. For more info see http://www.lyx.org/
+\lyxformat 413
+\begin_document
+\begin_header
+\textclass article
+\use_default_options true
+\begin_modules
+customHeadersFooters
+endnotes
+foottoend
+\end_modules
+\maintain_unincluded_children false
+\language spanish
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\float_placement H
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry true
+\use_amsmath 1
+\use_esint 1
+\use_mhchem 1
+\use_mathdots 1
+\cite_engine basic
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\use_refstyle 1
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\leftmargin 2cm
+\topmargin 3cm
+\rightmargin 2cm
+\bottommargin 3cm
+\secnumdepth 2
+\tocdepth 2
+\paragraph_separation indent
+\paragraph_indentation default
+\quotes_language english
+\papercolumns 1
+\papersides 1
+\paperpagestyle fancy
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Standard
+Entonces se analizó cada uno de los parámetros que influyen en dicha regla
+ y se optó por independizar de la frecuencia utilizada, la potencia de la
+ señal y por lo tanto la relación señal/ruido y a su vez el umbral de decisión.
+ En concreto lo que se tenía era: 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+h1=\sqrt{\frac{2}{T}}\cdot cos(2pi\cdot fc\cdot(\tau_{0}-t))
+\]
+
+\end_inset
+
+ 
+\begin_inset Formula 
+\[
+h2=\sqrt{\frac{2}{T}}\cdot sin(2pi\cdot fc\cdot(\tau_{0}-t))
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+obteniendo así al pasar la señal por el filtro (ver ecuaciones (19) y (22)
+ de la especificación del trabajo): 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+R_{1}=\sqrt{\frac{T}{2}}\cdot A\cdot cos(\Theta)
+\]
+
+\end_inset
+
+ y lo análogo para 
+\begin_inset Formula $R_{2}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Como se puede ver, la varianza de esto dependerá claramente de la frecuencia
+ utilizada: 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\sigma_{1}^{2}=\frac{T}{2}\cdot(\alpha\sigma)^{2}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+SNR=\frac{\sigma_{1}^{2}}{N_{0}/2}=\frac{T}{N_{0}}\cdot(\alpha\sigma)^{2}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Si en cambió se opta por elegir un factor de escala para h1 y h2 de forma
+ tal que dicha dependencia se anule, se obtiene:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+h1=\frac{2}{T}\cdot cos(2pi\cdot fc\cdot(\tau_{0}-t))
+\]
+
+\end_inset
+
+ 
+\begin_inset Formula 
+\[
+h2=\frac{2}{T}\cdot sin(2pi\cdot fc\cdot(\tau_{0}-t))
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+R_{1}=A\cdot cos(\Theta)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\sigma_{1}^{2}=(\alpha\sigma)^{2}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+SNR=\frac{\sigma_{1}^{2}}{N_{0}/2}=\frac{2}{N_{0}}\cdot(\alpha\sigma)^{2}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_body
+\end_document

@@ -1,0 +1,40 @@
+Con este código se obtuvieron los siguientes resultados que nuevamente comprueban una mejor performance del filtro modificado.
+
+Caso				Pe
+
+fdp_N0_1_Filtro_modif		.3874
+fdp_N0_1_Filtro_sin_modif	.5
+fdp_N0_1e-5_Filtro_modif	.0044
+fdp_N0_1e-5_Filtro_sin_modif	.4990
+fdp_N0_1e-7_Filtro_modif	5.1726e-004
+fdp_N0_1e-7_Filtro_sin_modif	.4284
+
+N0	Pe F sin modif	Pe F modif
+1	.5		.3874
+1e-5	.4990		.0044
+1e-7	.4284		5.1726e-004
+
+
+Ejercicio 5
+
+		Filtro sin modif	Filtro modif
+N0    	   SNR Pe Efectividad ECM      SNR Pe Efectividad ECM 
+1e-10 
+1e-5   
+1e-2   
+1      
+
+
+
+fc
+500e6
+100e6
+10e6
+100e3
+
+
+p
+.2
+.4
+.6
+.8

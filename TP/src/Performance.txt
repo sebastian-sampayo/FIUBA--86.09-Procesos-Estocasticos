@@ -1,0 +1,38 @@
+M =      100000
+alpha =  1
+fc =     1e+008
+k =      10
+kf =     1000
+sigma =  1
+v =      0
+d0 =     100
+N0 =     1e-010
+p =      0.5
+T =      1e-007
+s0 =     5e-011
+s1 =     5.005e-008
+SNR =    1000
+
+iteraciones: 1000
+Efectividad (aciertos/iteraciones): 1.000000
+Error Cuadrático Medio: 0.000109
+
+--------------------------------------
+M =      100000
+alpha =  1
+fc =     1e+008
+k =      10
+kf =     1000
+sigma =  1
+v =      300
+d0 =     100
+N0 =     1e-010
+p =      0.5
+T =      1e-007
+s0 =     5e-011
+s1 =     5.005e-008
+SNR =    1000
+
+iteraciones: 1000
+Efectividad (100*aciertos/iteraciones): 100.0000%
+Error Cuadrático Medio: 0.000106

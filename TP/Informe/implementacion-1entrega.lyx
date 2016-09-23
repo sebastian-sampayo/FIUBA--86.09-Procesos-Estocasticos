@@ -1,0 +1,682 @@
+#LyX 2.0 created this file. For more info see http://www.lyx.org/
+\lyxformat 413
+\begin_document
+\begin_header
+\textclass article
+\use_default_options true
+\begin_modules
+customHeadersFooters
+endnotes
+foottoend
+\end_modules
+\maintain_unincluded_children false
+\language spanish
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\float_placement H
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry true
+\use_amsmath 1
+\use_esint 1
+\use_mhchem 1
+\use_mathdots 1
+\cite_engine basic
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\use_refstyle 1
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\leftmargin 2cm
+\topmargin 3cm
+\rightmargin 2cm
+\bottommargin 3cm
+\secnumdepth 2
+\tocdepth 2
+\paragraph_separation indent
+\paragraph_indentation default
+\quotes_language english
+\papercolumns 1
+\papersides 1
+\paperpagestyle fancy
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Standard
+Entonces se analizó cada uno de los parámetros que influyen en dicha regla
+ y se optó por independizar de la frecuencia utilizada, la potencia de la
+ señal y por lo tanto la relación señal/ruido y a su vez el umbral de decisión.
+ En concreto lo que se tenía era: 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+h1=\sqrt{\frac{2}{T}}\cdot cos(2pi\cdot fc\cdot(\tau_{0}-t))
+\]
+
+\end_inset
+
+ 
+\begin_inset Formula 
+\[
+h2=\sqrt{\frac{2}{T}}\cdot sin(2pi\cdot fc\cdot(\tau_{0}-t))
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+obteniendo así al pasar la señal por el filtro (ver ecuaciones (19) y (22)
+ de la especificación del trabajo): 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+R_{1}=\sqrt{\frac{T}{2}}\cdot A\cdot cos(\Theta)
+\]
+
+\end_inset
+
+ y lo análogo para 
+\begin_inset Formula $R_{2}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Como se puede ver, la varianza de esto dependerá claramente de la frecuencia
+ utilizada: 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\sigma_{1}^{2}=\frac{T}{2}\cdot(\alpha\sigma)^{2}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+SNR=\frac{\sigma_{1}^{2}}{N_{0}/2}=\frac{T}{N_{0}}\cdot(\alpha\sigma)^{2}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Si en cambió se opta por elegir un factor de escala para h1 y h2 de forma
+ tal que dicha dependencia se anule, se obtiene:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+h1=\frac{2}{T}\cdot cos(2pi\cdot fc\cdot(\tau_{0}-t))
+\]
+
+\end_inset
+
+ 
+\begin_inset Formula 
+\[
+h2=\frac{2}{T}\cdot sin(2pi\cdot fc\cdot(\tau_{0}-t))
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+R_{1}=A\cdot cos(\Theta)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\sigma_{1}^{2}=(\alpha\sigma)^{2}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+SNR=\frac{\sigma_{1}^{2}}{N_{0}/2}=\frac{2}{N_{0}}\cdot(\alpha\sigma)^{2}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Simulaciones
+\end_layout
+
+\begin_layout Standard
+En las siguientes pruebas se utilizaron los siguientes parámetros:
+\end_layout
+
+\begin_layout LyX-Code
+% --------- Parámetros ------------ 
+\end_layout
+
+\begin_layout LyX-Code
+M = 1e5; Cantidad de muestras generadas
+\end_layout
+
+\begin_layout LyX-Code
+alpha = 1; % Parámetro de variable aleatoria usada para la amplitud 
+\end_layout
+
+\begin_layout LyX-Code
+fc = 100e6; % Frecuencia utilizada [Hertz]
+\end_layout
+
+\begin_layout LyX-Code
+k = 10; % Cantidad de períodos de señal a trasmitir
+\end_layout
+
+\begin_layout LyX-Code
+kf = 100; % Cantidad de períodos de señal que entran en el largo temporal
+ del sistema.
+\end_layout
+
+\begin_deeper
+\begin_layout LyX-Code
+% Determina distancia máxima posible de detectar.
+\end_layout
+
+\end_deeper
+\begin_layout LyX-Code
+sigma = 1; % Parámetro de variable aleatoria usada para la amplitud
+\end_layout
+
+\begin_layout LyX-Code
+v = 0; % [metros por segundo]
+\end_layout
+
+\begin_layout LyX-Code
+d0 = 100; % Distancia real del objeto [metros]
+\end_layout
+
+\begin_layout LyX-Code
+p = .5; % Probabilidad de que haya un objeto
+\end_layout
+
+\begin_layout LyX-Code
+% ---------------------------------
+\end_layout
+
+\begin_layout Standard
+Los resultados obtenidos luego de la simulación del primer modelo y que
+ llevaron al replanteo del problema se muestran a continuación.
+ La idea fue corroborar lo que estaba dando el umbral de decisión y la salida
+ del filtro cuando se recibía señal y cuando no.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float table
+wide false
+sideways false
+status collapsed
+
+\begin_layout LyX-Code
+--- Tests 100 iteraciones en cada caso ---
+\end_layout
+
+\begin_layout LyX-Code
+N0 = 1e-10
+\end_layout
+
+\begin_layout LyX-Code
+Efectividad (aciertos/iteraciones): 1.000000
+\end_layout
+
+\begin_layout LyX-Code
+\begin_inset Formula $||r|_{\mathcal{H}_{1}}||^{2}$
+\end_inset
+
+(en promedio): 9.78e-008
+\end_layout
+
+\begin_layout LyX-Code
+Umbral:             6.91e-010
+\end_layout
+
+\begin_layout LyX-Code
+\begin_inset Formula $||r|_{\mathcal{H}_{0}}||^{2}$
+\end_inset
+
+(en promedio): 5.06e-021
+\end_layout
+
+\begin_layout LyX-Code
+.
+\end_layout
+
+\begin_layout LyX-Code
+N0 = 1e-9
+\end_layout
+
+\begin_layout LyX-Code
+Efectividad (aciertos/iteraciones): 0.980000
+\end_layout
+
+\begin_layout LyX-Code
+\begin_inset Formula $||r|_{\mathcal{H}_{1}}||^{2}$
+\end_inset
+
+(en promedio): 1.39e-007
+\end_layout
+
+\begin_layout LyX-Code
+Umbral:             4.66e-009 
+\end_layout
+
+\begin_layout LyX-Code
+\begin_inset Formula $||r|_{\mathcal{H}_{0}}||^{2}$
+\end_inset
+
+(en promedio): 4.85e-020
+\end_layout
+
+\begin_layout LyX-Code
+.
+\end_layout
+
+\begin_layout LyX-Code
+N0 = 1e-7
+\end_layout
+
+\begin_layout LyX-Code
+Efectividad (aciertos/iteraciones): 0.660000
+\end_layout
+
+\begin_layout LyX-Code
+\begin_inset Formula $||r|_{\mathcal{H}_{1}}||^{2}$
+\end_inset
+
+(en promedio): 9.62e-008 
+\end_layout
+
+\begin_layout LyX-Code
+Umbral:             1.39e-007 
+\end_layout
+
+\begin_layout LyX-Code
+\begin_inset Formula $||r|_{\mathcal{H}_{0}}||^{2}$
+\end_inset
+
+(en promedio): 5.07e-018
+\end_layout
+
+\begin_layout LyX-Code
+.
+\end_layout
+
+\begin_layout LyX-Code
+N0 = 0.010000
+\end_layout
+
+\begin_layout LyX-Code
+Efectividad(aciertos/iteraciones): 0.520000
+\end_layout
+
+\begin_layout LyX-Code
+\begin_inset Formula $||r|_{\mathcal{H}_{1}}||^{2}$
+\end_inset
+
+(en promedio): 1.17e-007
+\end_layout
+
+\begin_layout LyX-Code
+Umbral:             1.00e-002
+\end_layout
+
+\begin_layout LyX-Code
+\begin_inset Formula $||r|_{\mathcal{H}_{0}}||^{2}$
+\end_inset
+
+(en promedio): 4.89e-013
+\end_layout
+
+\begin_layout LyX-Code
+------------------------------------------
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+Resultados de las simulaciones.
+ (
+\begin_inset Formula $r$
+\end_inset
+
+: observación, salida del filtro)
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Como se puede ver, la ubicación del umbral no aprovecha la relación señal/ruido
+ maximizada por el filtro adaptado, ya que este nivel se encuentra mucha
+ más cerca del valor a la salida del filtro cuando hay señal que cuando
+ no.
+\end_layout
+
+\begin_layout Standard
+La mejoría en el algoritmo detector fue comprobada satisfactoriamente con
+ los resultados de las simulaciones que se detallan a continuación.
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float table
+wide false
+sideways false
+status collapsed
+
+\begin_layout LyX-Code
+--- Tests 100 iteraciones en cada caso ---
+\end_layout
+
+\begin_layout LyX-Code
+N0 = 1.00e-007
+\end_layout
+
+\begin_layout LyX-Code
+Efectividad (aciertos/iteraciones): 1.000000 
+\end_layout
+
+\begin_layout LyX-Code
+\begin_inset Formula $||r|_{\mathcal{H}_{1}}||^{2}$
+\end_inset
+
+(en promedio): 1.53e+000 
+\end_layout
+
+\begin_layout LyX-Code
+Umbral: 1.68e-006 
+\end_layout
+
+\begin_layout LyX-Code
+\begin_inset Formula $||r|_{\mathcal{H}_{0}}||^{2}$
+\end_inset
+
+(en promedio): 1.02e-010 
+\end_layout
+
+\begin_layout LyX-Code
+.
+\end_layout
+
+\begin_layout LyX-Code
+N0 = 1.00e-002 
+\end_layout
+
+\begin_layout LyX-Code
+Efectividad (aciertos/iteraciones): 0.980000 
+\end_layout
+
+\begin_layout LyX-Code
+\begin_inset Formula $||r|_{\mathcal{H}_{1}}||^{2}$
+\end_inset
+
+(en promedio): 2.02e+000 
+\end_layout
+
+\begin_layout LyX-Code
+Umbral: 5.33e-002 
+\end_layout
+
+\begin_layout LyX-Code
+\begin_inset Formula $||r|_{\mathcal{H}_{0}}||^{2}$
+\end_inset
+
+(en promedio): 9.88e-006 
+\end_layout
+
+\begin_layout LyX-Code
+.
+\end_layout
+
+\begin_layout LyX-Code
+N0 = 5.00e-001 
+\end_layout
+
+\begin_layout LyX-Code
+Efectividad (aciertos/iteraciones): 0.840000 
+\end_layout
+
+\begin_layout LyX-Code
+\begin_inset Formula $||r|_{\mathcal{H}_{1}}||^{2}$
+\end_inset
+
+(en promedio): 2.51e+000 
+\end_layout
+
+\begin_layout LyX-Code
+Umbral: 1.01e+000 
+\end_layout
+
+\begin_layout LyX-Code
+\begin_inset Formula $||r|_{\mathcal{H}_{0}}||^{2}$
+\end_inset
+
+(en promedio): 5.03e-004 
+\end_layout
+
+\begin_layout LyX-Code
+.
+\end_layout
+
+\begin_layout LyX-Code
+N0 = 1.00e+000 
+\end_layout
+
+\begin_layout LyX-Code
+Efectividad (aciertos/iteraciones): 0.690000
+\end_layout
+
+\begin_layout LyX-Code
+\begin_inset Formula $||r|_{\mathcal{H}_{1}}||^{2}$
+\end_inset
+
+(en promedio): 1.89e+000 
+\end_layout
+
+\begin_layout LyX-Code
+Umbral: 1.65e+000 
+\end_layout
+
+\begin_layout LyX-Code
+\begin_inset Formula $||r|_{\mathcal{H}_{0}}||^{2}$
+\end_inset
+
+(en promedio): 1.01e-003 
+\end_layout
+
+\begin_layout LyX-Code
+------------------------------------------
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+Resultados de las simulaciones.(
+\begin_inset Formula $r$
+\end_inset
+
+: observación, salida del filtro)
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Si bien ahora el umbral se encuentra más centrado aprovechando la relación
+ señal/ruido, al aumentar la potencia de ruido se ve que este nivel se acerca
+ nuevamente al valor que arroja la salida del filtro cuando hay señal.
+ Esto indica que se podría seguir modificando el umbral hasta encontrar
+ un nivel óptimo.
+\end_layout
+
+\begin_layout Standard
+En concreto, siguiendo la consigna original, el programa difícilmente detectaba
+ la siguiente señal:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename C:/Users/SEBI-W7/Documents/FIUBA/7mo Cuatrimestre (1-2013)/Procesos Estocásticos/TP/Graficos/No1e-6.png
+	width 60text%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+Onda recibida para una 
+\begin_inset Formula $N0=1\cdot10^{-6}$
+\end_inset
+
+.
+ Señal determinística + Ruido Blanco.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Por otro lado, al modificar la constante del filtro, el programa detectaba
+ efectivamente el siguiente tipo de señal:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename C:/Users/SEBI-W7/Documents/FIUBA/7mo Cuatrimestre (1-2013)/Procesos Estocásticos/TP/Graficos/SNR1_FAvs2.png
+	width 60text%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+Onda recibida para una 
+\begin_inset Formula $N_{0}=1$
+\end_inset
+
+.
+ Señal determinística + Ruido Blanco.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_body
+\end_document
